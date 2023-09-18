@@ -10,12 +10,17 @@ Run in the current working directory
 webp-convert
 ```
 
-or 
+Recursively run in the current working directory
 ```bash
 webp-convert --recursive
 ```
 
-or
+Recursively run in the current working directory with depth limit 3
+```bash
+webp-convert --maxdepth 3
+```
+
+Recursively run in the current working directory with extra `cwebp` args
 ```bash
 webp-convert --recursive -m6 -q70 -mt
 ```

@@ -1,20 +1,29 @@
 #/bin/bash
 
 FIND_ARGS=()
+FINS_MAXDEPTH=1
 CWEBP_ARGS=()
 
 key="$1"
-    case $key in
-        --maxdepth)
-        FIND_ARGS+=("-maxdepth $2")
-        shift # past argument
-        shift # past value
-        ;;
-        *)    # unknown option
-        CWEBP_ARGS+=("$1")
-        shift # past argument
-        ;;
-    esac
+case $key in
+    --maxdepth)
+    FIND_MAXDEPTH=$2
+    shift # past argument
+    shift # past value
+    ;;
+    --recursive)
+    FIND_MAXDEPTH=0
+    shift # past argument
+    ;;
+    *)    # unknown option
+    CWEBP_ARGS+=("$1")
+    shift # past argument
+    ;;
+esac
+
+if [[ $FIND_MAXDEPTH -gt 0 ]]; then
+    FIND_ARGS+=("-maxdepth $FIND_MAXDEPTH")
+fi
 
 find . ${FIND_ARGS[*]} -type f -name '*.jpeg' \
 -o -name '*.jpg' \

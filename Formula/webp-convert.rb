@@ -2,7 +2,7 @@ require 'formula'
 
 class WebpConvert < Formula
   url "https://github.com/sergeycherepanov/homebrew-webp-convert.git", :using => :git
-  version "0.1.6"
+  version "0.1.7"
   revision 1
 
   depends_on 'webp'
