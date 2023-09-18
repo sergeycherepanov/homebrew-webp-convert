@@ -1,6 +1,5 @@
 #/bin/bash
 set -e
-set -x
 FIND_ARGS=()
 FIND_MAXDEPTH=1
 CWEBP_ARGS=()
@@ -9,6 +8,10 @@ while [[ $# -gt 0 ]]
 do
     key="$1"
     case $key in
+        --debug)
+        set -x
+        shift # past argument
+        ;;
         --maxdepth)
         FIND_MAXDEPTH=$2
         shift # past argument
