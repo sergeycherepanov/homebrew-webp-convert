@@ -1,0 +1,28 @@
+#/bin/bash
+
+FIND_ARGS=()
+CWEBP_ARGS=()
+
+key="$1"
+    case $key in
+        --maxdepth)
+        FIND_ARGS+=("-maxdepth $2")
+        shift # past argument
+        shift # past value
+        ;;
+        *)    # unknown option
+        CWEBP_ARGS+=("$1")
+        shift # past argument
+        ;;
+    esac
+
+find . ${FIND_ARGS[*]} -type f -name '*.jpeg' \
+-o -name '*.jpg' \
+-o -name '*.png' \
+-o -name '*.gif' \
+-o -name '*.tif' \
+-o -name '*.tiff' \
+-o -name '*.pgm' \
+-o -name '*.ppm' \
+-o -name '*.pnm' \
+| rush --verbose 'cwebp -m 6 -q 51 -af -progress ${CWEBP_ARGS[*]} "{}" -o "{.}.webp"'
