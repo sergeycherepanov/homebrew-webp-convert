@@ -1,5 +1,6 @@
 #/bin/bash
-
+set -e
+set -x
 FIND_ARGS=()
 FINS_MAXDEPTH=1
 CWEBP_ARGS=()
