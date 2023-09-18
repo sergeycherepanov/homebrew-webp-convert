@@ -1,7 +1,7 @@
 # Converts all images in the current folder to WEBP.
 ## Installation
 ```bash
-brew install sergeycherepanov/webp-convert
+brew install sergeycherepanov/webp-convert/webp-convert
 ```
 
 ## Usage
