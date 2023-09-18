@@ -5,22 +5,25 @@ FIND_ARGS=()
 FIND_MAXDEPTH=1
 CWEBP_ARGS=()
 
-key="$1"
-case $key in
-    --maxdepth)
-    FIND_MAXDEPTH=$2
-    shift # past argument
-    shift # past value
-    ;;
-    --recursive)
-    FIND_MAXDEPTH=0
-    shift # past argument
-    ;;
-    *)    # unknown option
-    CWEBP_ARGS+=("$1")
-    shift # past argument
-    ;;
-esac
+while [[ $# -gt 0 ]]
+do
+    key="$1"
+    case $key in
+        --maxdepth)
+        FIND_MAXDEPTH=$2
+        shift # past argument
+        shift # past value
+        ;;
+        --recursive)
+        FIND_MAXDEPTH=0
+        shift # past argument
+        ;;
+        *)    # unknown option
+        CWEBP_ARGS+=("$1")
+        shift # past argument
+        ;;
+    esac
+done
 
 if [[ $FIND_MAXDEPTH -gt 0 ]]; then
     FIND_ARGS+=("-maxdepth $FIND_MAXDEPTH")
